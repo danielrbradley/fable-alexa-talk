@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/league.css">
+    <title>Alexa all the things!</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <section>
+            <h1>Hacking on Alexa</h1>
+            <img src="echo.jpg" height="40%" />
+            <h2>in strange and unusual ways</h2>
+          </section>
+
+          <section>
+            <h2>How I got here</h2>
+            <ul>
+              <li class="fragment">Really ❤️ F#</li>
+              <li class="fragment">Building things with Alexa</li>
+            </ul>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h2>Alexa Primer</h2>
+          </section>
+
+          <section>
+            <h2>Terminology</h2>
+            <p class="fragment">Skill <span class="fragment">➠ Program</span></p>
+            <p class="fragment">Invocation Name <span class="fragment">➠ Program Name</span></p>
+            <p class="fragment">Intent <span class="fragment">➠ Method</span></p>
+            <p class="fragment">Slot <span class="fragment">➠ Argument</span></p>
+          </section>
+
+          <section>
+            <h2>How it works</h2>
+            <img src="Alexa.png" />
+          </section>
+
+          <section>
+            <h2>Requests</h2>
+            <div class="fragment">
+              <p>LaunchRequest</p>
+              <blockquote>"Alexa start <code style="color: greenyellow">InvocationName</code>"</blockquote>
+            </div>
+            <div class="fragment">
+              <p>IntentRequest</p>
+              <blockquote>"Alexa ask <code style="color: greenyellow">InvocationName</code> <code style="color: darkorange">...</code>"</blockquote>
+            </div>
+            <div class="fragment">
+              <p>SessionEnded</p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Response</h2>
+            <ul>
+              <li class="fragment">Speech</li>
+              <li class="fragment">Card</li>
+              <li class="fragment">Has the session finished?</li>
+            </ul>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h2>Looking at Alexa</h2>
+            <p>Didn't like the official SDK</p>
+            <table>
+              <tr>
+                <td>
+                </td>
+                <td>
+
+                </td>
+              </tr>
+            </table>
+            <pre><code class="hljs" data-trim data-noescape>
+exports.handler = function(event, context, callback){
+  var alexa = Alexa.handler(event, context, callback);
+  alexa.registerHandlers({
+    'LaunchRequest': function () {
+      this.emit('HelloWorldIntent');
+    },
+    'HelloWorldIntent': function () {
+      this.emit(':tell', 'Hello World!');
+    }
+  });
+  alexa.execute();
+};
+            </code></pre>
+          </section>
+
+          <section>
+            <img src="meh.gif" />
+          </section>
+
+          <section>
+            <h2>alexa-ts</h2>
+            <ul>
+              <li class="fragment">Simple Request/Response</li>
+              <li class="fragment">Complex, type-safe state</li>
+              <li class="fragment">Functionally composable</li>
+            </ul>
+            <p class="fragment">Would rather be writing F# 🤔</p>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h1>DDD in F#</h1>
+            <h2>... Requests</h2>
+            <pre><code class="fsharp hljs" data-trim data-noescape>
+type Request =
+  | Launch
+  | Intent of name : string * Slots
+  | SessionEnded of SessionEndedReason
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Response</h2>
+            <pre><code class="fsharp hljs" data-trim data-noescape>
+type Response =
+  {
+    EndSession : bool
+    Speech : Speech option
+    Reprompt : Speech option
+    Card : Card option
+  }
+            </code></pre>
+          </section>
+
+        </section>
+
+        <section data-transition="zoom">
+
+          <section>
+            <h1>Into the unknown</h1>
+            <p data-transition="zoom">Fable interop</p>
+          </section>
+
+        </section>
+
+      </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
