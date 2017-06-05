@@ -40,3 +40,8 @@ Prep: Clean `out` folders
   - StringEnum
   - Emit (jsNative)
   - Dynamic props
+
+## Conclusion
+- Alpha: lib support
+- Fable 1.0: project change, js->MS
+- vs Typescript: community, inference, errors
