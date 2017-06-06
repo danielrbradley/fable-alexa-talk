@@ -1,24 +1,30 @@
 # Boldly going where no F# has gone before - Alexa skills in F#
 
-Prep: Clean `out` folders
+Prep:
+- Clean `out` folders
+- Put Alexa on own account & network
+- Clone onto win laptop.
+- Screens: Presentation, alexa-fs, alexa-ts, plan
 
-- Aim: Alexa, Fable, bits n pieces
-- Ask questions
+## Intro
+
+- Aim: Alexa, Fable, bits n pieces, traction/ideas
+- Not an expert, Ask questions
 
 ## Journey
-- F# dev
+- .Net, F# dev
 - Jan, moved: JS, Alexa
 
 ## Primer on Alexa
 
-- Overview
-- Crappy Architecture Diagram
+- Metaphore: Command line e.g. git
+- Architecture
 - Requests (+ slots)
 - Response
 
 ## SDKs
 
-- Bad: emit, magic strings, copy/paste docs.
+- Bad: emit, magic strings, copy/paste docs, string state.
 - Used it for a bit.
 - TS
 - F#: Core, Team, Learn, Fable
@@ -27,7 +33,9 @@ Prep: Clean `out` folders
 
 - Domain modelling
 - Demo
-  - Hello world
+  - Build hello world
+    - Add Routing
+    - Add count state
   - Guessing Game
 
 ## Interop
@@ -42,6 +50,9 @@ Prep: Clean `out` folders
   - Dynamic props
 
 ## Conclusion
-- Alpha: lib support
-- Fable 1.0: project change, js->MS
-- vs Typescript: community, inference, errors
+- F#: Good fit
+- Fable:
+  - SPA next
+  - 1.0 (project change, js->MS)
+- Lib support
+- Contribute back
